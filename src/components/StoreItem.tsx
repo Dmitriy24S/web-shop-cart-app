@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import currencyFormat from '../utils/currencyFormat'
 
-const StoreItem = () => {
+interface Props {
+  name: string
+  price: number
+  imgUrl: string
+}
+
+const StoreItem = ({ name, price, imgUrl }: Props) => {
   const [amount, setAmount] = useState(0)
 
   const incrementAmount = () => {
@@ -16,28 +23,35 @@ const StoreItem = () => {
 
   return (
     <ItemCardWrapper>
-      <h3>Title</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, earum?</p>
-
-      <Amount>
-        {amount > 0 ? (
-          <>
-            <button onClick={decrementAmount}>-</button>
-            <span>{amount}</span>
-            <button onClick={incrementAmount}>+</button>
-          </>
-        ) : (
-          <button
-            onClick={(e) => {
-              const button = e.target as HTMLButtonElement
-              button.blur() // remove outline on '-' btn after click add to cart?
-              incrementAmount()
-            }}
-          >
-            Add to Cart
-          </button>
-        )}
-      </Amount>
+      <img src={imgUrl} alt={name} />
+      <div className='info'>
+        <h3>{name}</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, earum?
+        </p>
+        <div className='actions'>
+          <Amount>
+            {amount > 0 ? (
+              <>
+                <button onClick={decrementAmount}>-</button>
+                <span>{amount}</span>
+                <button onClick={incrementAmount}>+</button>
+              </>
+            ) : (
+              <button
+                onClick={(e) => {
+                  const button = e.target as HTMLButtonElement
+                  button.blur() // remove outline on '-' btn after click add to cart?
+                  incrementAmount()
+                }}
+              >
+                Add to Cart
+              </button>
+            )}
+          </Amount>
+          <div className='price'>{currencyFormat(price)}</div>
+        </div>
+      </div>
     </ItemCardWrapper>
   )
 }
@@ -46,12 +60,31 @@ export default StoreItem
 
 const ItemCardWrapper = styled.div`
   border: 1px solid gray;
-  padding: 1rem;
+  /* padding: 1rem; */
   border-radius: 7px;
   width: 100%;
   h3 {
     margin-bottom: 0.5rem;
     color: #8e6fe6;
+  }
+  img {
+    object-fit: cover;
+    /* width: 270px; */
+    width: 100%;
+    height: 200px;
+  }
+  .info {
+    padding: 1rem;
+  }
+  .price {
+    color: #8e6fe6;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `
 
