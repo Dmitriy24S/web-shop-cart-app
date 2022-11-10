@@ -1,25 +1,19 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useShoppingCartContext } from '../context/ShoppingCartContext'
 import currencyFormat from '../utils/currencyFormat'
 
 interface Props {
+  id: number
   name: string
   price: number
   imgUrl: string
 }
 
-const StoreItem = ({ name, price, imgUrl }: Props) => {
-  const [amount, setAmount] = useState(0)
-
-  const incrementAmount = () => {
-    setAmount((prev) => prev + 1)
-  }
-
-  const decrementAmount = () => {
-    if (amount > 0) {
-      setAmount((prev) => prev - 1)
-    }
-  }
+const StoreItem = ({ id, name, price, imgUrl }: Props) => {
+  const { increaseCartAmount, decreaseCartAmount, getItemAmount } =
+    useShoppingCartContext()
+  const amount = getItemAmount(id)
 
   return (
     <ItemCardWrapper>
@@ -33,16 +27,16 @@ const StoreItem = ({ name, price, imgUrl }: Props) => {
           <Amount>
             {amount > 0 ? (
               <>
-                <button onClick={decrementAmount}>-</button>
+                <button onClick={() => decreaseCartAmount(id)}>-</button>
                 <span>{amount}</span>
-                <button onClick={incrementAmount}>+</button>
+                <button onClick={() => increaseCartAmount(id)}>+</button>
               </>
             ) : (
               <button
                 onClick={(e) => {
                   const button = e.target as HTMLButtonElement
                   button.blur() // remove outline on '-' btn after click add to cart?
-                  incrementAmount()
+                  increaseCartAmount(id)
                 }}
               >
                 Add to Cart

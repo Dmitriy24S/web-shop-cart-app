@@ -5,7 +5,7 @@ import { useShoppingCartContext } from '../context/ShoppingCartContext'
 // import {ReactComponent as CartSVG} from '../assets/cart.svg'
 
 const Header = () => {
-  const { toggleCart } = useShoppingCartContext()
+  const { toggleCart, getCartAmount } = useShoppingCartContext()
 
   return (
     <HeaderWrapper>
@@ -52,8 +52,7 @@ const Header = () => {
               </g>
             </g>
           </svg>
-
-          <CartNotification>3</CartNotification>
+          {getCartAmount > 0 && <CartNotification>{getCartAmount}</CartNotification>}
         </Cart>
       </Navbar>
     </HeaderWrapper>
@@ -89,10 +88,10 @@ const Navbar = styled.div`
     a {
       padding: 0.5rem;
       transition: background-color 150ms ease-in-out;
+      border-radius: 7px;
     }
     a:hover {
       background-color: #f7f7f73b;
-      border-radius: 7px;
     }
   }
 `
