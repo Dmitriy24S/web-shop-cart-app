@@ -57,6 +57,7 @@ const ItemCardWrapper = styled.div`
   /* padding: 1rem; */
   border-radius: 7px;
   width: 100%;
+  overflow: hidden;
   h3 {
     margin-bottom: 0.5rem;
     color: #8e6fe6;
