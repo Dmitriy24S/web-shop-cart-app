@@ -46,7 +46,8 @@ const CartItemWrapper = styled.div`
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid #535353;
+  border: 1px solid var(--color-gray-light);
+  background-color: var(--color-dark-purple);
   border-radius: 7px;
   margin-bottom: 1rem;
   img {
@@ -61,7 +62,8 @@ const CartItemWrapper = styled.div`
     /* for ellipsis? parent+child overflow hidden?*/
   }
   .title {
-    color: #8e6fe6;
+    /* color: #8e6fe6; */
+    color: var(--color-purple);
     margin-bottom: 0.3rem;
     text-overflow: ellipsis;
     white-space: nowrap;

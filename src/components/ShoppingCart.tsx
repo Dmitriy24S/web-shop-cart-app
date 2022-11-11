@@ -34,8 +34,12 @@ const ShoppingCart = ({ isCartOpen }: Props) => {
 export default ShoppingCart
 
 const CartWrapper = styled.div<{ isCartOpen: boolean }>`
-  background-color: #252525;
-  width: 22rem;
+  /* background-color: #252525; */
+  background-color: var(--color-bg-dark);
+  /* width: 22rem; */
+  /* width: 300px; */
+  width: 100%;
+  max-width: 25rem;
   height: 100%;
   position: fixed;
   right: 0;
@@ -49,9 +53,10 @@ const CartWrapper = styled.div<{ isCartOpen: boolean }>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     h2 {
-      color: #9b3beb;
+      /* color: #9b3beb; */
+      color: var(--color-purple);
     }
     // TODO: make shared X(close) btn? */
     button {
@@ -59,12 +64,15 @@ const CartWrapper = styled.div<{ isCartOpen: boolean }>`
       right: 0;
       padding: 0 0.5rem;
       background: transparent;
-      color: #9b3beb;
+      /* color: #9b3beb; */
+      color: var(--color-purple);
       font-size: 2rem;
     }
     button:hover,
     button:focus-visible {
-      color: #c78bff;
+      /* color: #c78bff; */
+      /* color: #ac92f3; */
+      color: var(--color-purple-light);
     }
     button:focus {
       outline: none;

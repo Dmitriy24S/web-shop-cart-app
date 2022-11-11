@@ -1,0 +1,9 @@
+:root {
+  --color-purple: #8e6fe6;
+  --color-purple-light: #957dec;
+  --color-gray-hover: hsl(0deg 0% 19%);
+  --color-gray-light: #303030;
+  --color-dark: #1a1a1a;
+  --color-bg-dark: #242424;
+  --color-dark-purple: #28282a;
+}

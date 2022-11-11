@@ -21,7 +21,7 @@ const Header = () => {
             <Link to='about'>About</Link>
           </li>
         </ul>
-        <Cart onClick={toggleCart}>
+        <Cart onClick={toggleCart} title='Cart'>
           <svg
             version='1.1'
             id='Capa_1'
@@ -62,7 +62,15 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.header`
-  border-bottom: 2px solid #7e63e0;
+  position: sticky;
+  top: 0;
+  /* height: 5rem; */
+  /* border-bottom: 2px solid #7e63e0; */
+  border-bottom: 2px solid var(--color-purple);
+  box-shadow: 0px 1px 5px #181818;
+  background-color: var(--color-bg-dark);
+  opacity: 0.9;
+  backdrop-filter: blur(1px);
 `
 const Navbar = styled.div`
   display: flex;
@@ -70,9 +78,8 @@ const Navbar = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1.3rem;
-  padding: 1em;
-  padding-bottom: 1.5rem;
-  max-width: 1280px;
+  padding: 0.5rem 1rem;
+  max-width: 1900px;
   margin: 0 auto;
   @media (min-width: 500px) {
     flex-direction: row;
@@ -80,26 +87,32 @@ const Navbar = styled.div`
 
   ul {
     display: flex;
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
     @media (min-width: 600px) {
       gap: 2rem;
     }
-
     a {
       padding: 0.5rem;
-      transition: background-color 150ms ease-in-out;
       border-radius: 7px;
+      transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
     }
     a:hover {
-      background-color: #f7f7f73b;
+      /* background-color: #f7f7f73b; */
+      background-color: var(--color-gray-hover);
+      color: white;
     }
   }
 `
 
 const Cart = styled.button`
-  border-radius: 5px;
-  background-color: #7e63e0;
-  padding: 0.7rem;
+  /* border-radius: 5px; */
+  border-radius: 50%;
+  /* background-color: #7e63e0; */
+  background-color: var(--color-purple);
+  /* padding: 0.7rem; */
+  padding: 0.5rem;
+  width: 36px;
+  height: 36px;
   position: relative;
   display: flex;
   align-items: center;
@@ -108,7 +121,8 @@ const Cart = styled.button`
   outline: none;
 
   &:hover {
-    background-color: #957dec;
+    /* background-color: #957dec; */
+    background-color: var(--color-purple-light);
   }
   /* click focus - off? */
   &:focus {
@@ -116,8 +130,10 @@ const Cart = styled.button`
   }
   /* tab focus style */
   &:focus-visible {
-    outline: 0.25rem solid #957dec;
-    background-color: #957dec;
+    /* outline: 0.25rem solid #957dec; */
+    outline: 0.25rem solid var(--color-purple-light);
+    /* background-color: #957dec; */
+    background-color: var(--color-purple-light);
     outline-offset: 3px;
     /* box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4); */
     /* box-shadow: 0 0 6px 6px rgb(255 27 27 / 64%); */
@@ -135,10 +151,13 @@ const CartNotification = styled.div`
   background-color: red;
   color: white;
   border-radius: 50%;
-  height: 24px;
-  width: 24px;
+  /* height: 24px; */
+  /* width: 24px; */
+  height: 20px;
+  width: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.8rem;
   font-weight: 700;
 `

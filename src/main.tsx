@@ -9,12 +9,14 @@ import {
   Routes
 } from 'react-router-dom'
 import { ShoppingCartContextProvider } from './context/ShoppingCartContext'
-import './index.css'
 import MainLayout from './layouts/MainLayout'
 import About from './pages/About'
 import ErrorPage from './pages/ErrorPage'
 import Home from './pages/Home'
 import Store from './pages/Store'
+
+import './index.css'
+import './variables.css'
 
 // browser side - react lazy loading
 // const Home = React.lazy(() => import(/* webpackChunkName: 'Home' */ './pages/Home'))
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/store',
+        path: 'store',
         element: (
           // <Suspense fallback={<h1>Loading...</h1>}>
           <Store />
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/about',
+        path: 'about',
         element: (
           // <Suspense>
           <About />

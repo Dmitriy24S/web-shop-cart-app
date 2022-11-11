@@ -57,14 +57,17 @@ const StoreItem = ({ id, name, price, imgUrl }: Props) => {
 export default StoreItem
 
 const ItemCardWrapper = styled.div`
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  border: 1px solid var(--color-gray-light);
+  background-color: var(--color-dark-purple);
   /* padding: 1rem; */
   border-radius: 7px;
   width: 100%;
   overflow: hidden;
   h3 {
     margin-bottom: 0.5rem;
-    color: #8e6fe6;
+    /* color: #8e6fe6; */
+    color: var(--color-purple);
   }
   img {
     object-fit: cover;
@@ -76,7 +79,8 @@ const ItemCardWrapper = styled.div`
     padding: 1rem;
   }
   .price {
-    color: #8e6fe6;
+    /* color: #8e6fe6; */
+    color: var(--color-purple);
     font-weight: 600;
     letter-spacing: 0.6px;
   }
@@ -97,7 +101,8 @@ const Amount = styled.div`
     min-width: 2ch;
     text-align: center;
     font-weight: 600;
-    color: #9873ff;
+    /* color: #9873ff; */
+    color: var(--color-purple);
   }
 
   button {
@@ -109,6 +114,7 @@ const Amount = styled.div`
   }
   button:focus,
   button:focus-visible {
-    outline: 2px solid #8e6fe6;
+    /* outline: 2px solid #8e6fe6; */
+    outline: 2px solid var(--color-purple);
   }
 `
