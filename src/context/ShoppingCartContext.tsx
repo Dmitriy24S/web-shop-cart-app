@@ -12,6 +12,7 @@ interface ShoppingCartContextType {
   increaseCartAmount: (id: number) => void
   decreaseCartAmount: (id: number) => void
   toggleCart: () => void
+  removeItemFromCart: (id: number) => void
 }
 
 interface Props {
@@ -24,8 +25,10 @@ export const useShoppingCartContext = () => useContext(ShoppintCartContext)
 
 // Provider
 export const ShoppingCartContextProvider = ({ children }: Props) => {
-  const [isCartOpen, setIsCartOpen] = useState(true)
-  const [cartItems, setCartItems] = useState<CartItemType[]>([])
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  // const [isCartOpen, setIsCartOpen] = useState(true)
+  // const [cartItems, setCartItems] = useState<CartItemType[]>([])
+  const [cartItems, setCartItems] = useState<CartItemType[]>([{ id: 2, amount: 2 }])
 
   const toggleCart = () => {
     console.log(isCartOpen, 'toggle')
@@ -39,6 +42,10 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
 
   const getItemAmount = (id: number) => {
     return cartItems.find((item) => item.id === id)?.amount || 0
+  }
+
+  const removeItemFromCart = (id: number) => {
+    setCartItems((currentCartItems) => currentCartItems.filter((item) => item.id !== id))
   }
 
   const increaseCartAmount = (id: number) => {
@@ -93,7 +100,8 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
         increaseCartAmount,
         decreaseCartAmount,
         getCartAmount,
-        getItemAmount
+        getItemAmount,
+        removeItemFromCart
       }}
     >
       {children}

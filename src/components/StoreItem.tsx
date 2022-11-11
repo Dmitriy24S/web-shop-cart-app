@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useShoppingCartContext } from '../context/ShoppingCartContext'
 import currencyFormat from '../utils/currencyFormat'
@@ -11,9 +11,13 @@ interface Props {
 }
 
 const StoreItem = ({ id, name, price, imgUrl }: Props) => {
-  const { increaseCartAmount, decreaseCartAmount, getItemAmount } =
+  const { getItemAmount, increaseCartAmount, decreaseCartAmount } =
     useShoppingCartContext()
   const amount = getItemAmount(id)
+
+  // let amount = 0
+  // if (getItemAmount) amount = getItemAmount(id)
+  // ! Uncaught TypeError: increaseCartAmount is not a function -> after code save?
 
   return (
     <ItemCardWrapper>

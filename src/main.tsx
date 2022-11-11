@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
@@ -12,17 +12,55 @@ import { ShoppingCartContextProvider } from './context/ShoppingCartContext'
 import './index.css'
 import MainLayout from './layouts/MainLayout'
 import About from './pages/About'
+import ErrorPage from './pages/ErrorPage'
 import Home from './pages/Home'
 import Store from './pages/Store'
+
+// browser side - react lazy loading
+// const Home = React.lazy(() => import(/* webpackChunkName: 'Home' */ './pages/Home'))
+// const Store = React.lazy(() => import(/* webpackChunkName: 'Store' */ './pages/Store'))
+// const About = React.lazy(() => import(/* webpackChunkName: 'About' */ './pages/About'))
+// const ErrorPage = React.lazy(
+//   () => import(/* webpackChunkName: 'ErrorPage' */ './pages/ErrorPage')
+// )
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
     children: [
-      { path: '', element: <Home /> },
-      { path: '/store', element: <Store /> },
-      { path: '/about', element: <About /> }
+      {
+        path: '',
+        element: (
+          // <Suspense>
+          <Home />
+          // </Suspense>
+        )
+      },
+      {
+        path: '/store',
+        element: (
+          // <Suspense fallback={<h1>Loading...</h1>}>
+          <Store />
+          // </Suspense>
+        )
+      },
+      {
+        path: '/about',
+        element: (
+          // <Suspense>
+          <About />
+          // </Suspense>
+        )
+      },
+      {
+        path: '*',
+        element: (
+          // <Suspense>
+          <ErrorPage />
+          // </Suspense>
+        )
+      }
     ]
   }
 ])
