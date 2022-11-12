@@ -22,6 +22,15 @@ const ShoppingCart = ({ isCartOpen }: Props) => {
     return total + (fullItemInfo?.price || 0) * cartItem.amount
   }, 0)
 
+  // Lock body scroll when have side shopping cart menu open (prevent double Y scrollbar)
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isCartOpen])
+
   return (
     <>
       <CartBackdrop onClick={toggleCart} isCartOpen={isCartOpen} />
@@ -63,6 +72,7 @@ const CartWrapper = styled.div<{ isCartOpen: boolean }>`
   padding: 2rem;
   transform: ${({ isCartOpen }) => (isCartOpen ? `translateX(0)` : `translateX(100%)`)};
   transition: transform 250ms ease-in-out;
+  overflow-y: auto;
   .cart-top {
     position: relative;
     display: flex;
