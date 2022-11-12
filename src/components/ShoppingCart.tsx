@@ -22,9 +22,11 @@ const ShoppingCart = ({ isCartOpen }: Props) => {
           <button onClick={toggleCart}>&times;</button>
         </div>
         <ul className='cart-list'>
-          {cartItems?.map((item) => (
-            <CartItem {...item} key={item.id} />
-          ))}
+          {/* {cartItems?.length === 0 ? 'Cart is empty.' : */}
+          {/* {!cartItems || cartItems.length === 0 */}
+          {cartItems.length === 0
+            ? 'Cart is empty.'
+            : cartItems?.map((item) => <CartItem {...item} key={item.id} />)}
         </ul>
       </CartWrapper>
     </>
@@ -35,7 +37,8 @@ export default ShoppingCart
 
 const CartWrapper = styled.div<{ isCartOpen: boolean }>`
   /* background-color: #252525; */
-  background-color: var(--color-bg-dark);
+  /* background-color: var(--color-bg-dark); */
+  background-color: rgb(var(--color-bg-dark));
   /* width: 22rem; */
   /* width: 300px; */
   width: 100%;
@@ -80,6 +83,9 @@ const CartWrapper = styled.div<{ isCartOpen: boolean }>`
     button:focus-visible {
       outline: 4px auto -webkit-focus-ring-color;
     }
+  }
+  .cart-list {
+    text-align: center;
   }
 `
 

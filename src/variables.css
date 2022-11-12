@@ -4,6 +4,9 @@
   --color-gray-hover: hsl(0deg 0% 19%);
   --color-gray-light: #303030;
   --color-dark: #1a1a1a;
-  --color-bg-dark: #242424;
+  /* --color-bg-dark: #242424; */
+  /* --color-bg-dark: rgb(36, 36, 36); */
+  /* set as rgb color numbers for flexibility with opacity */
+  --color-bg-dark: 36, 36, 36;
   --color-dark-purple: #28282a;
 }

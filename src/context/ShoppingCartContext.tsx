@@ -6,7 +6,8 @@ interface CartItemType {
   amount: number
 }
 interface ShoppingCartContextType {
-  cartItems: CartItemType[] | undefined
+  // cartItems: CartItemType[] | undefined
+  cartItems: CartItemType[]
   getCartAmount: number
   getItemAmount: (id: number) => number
   increaseCartAmount: (id: number) => void

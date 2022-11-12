@@ -72,16 +72,20 @@ const HeaderWrapper = styled.header`
   /* opacity: 0.9;*/
   /*backdrop-filter: blur(1px); */
   /* position: relative; */
+  background-color: rgba(var(--color-bg-dark), 89%);
+  backdrop-filter: blur(5px);
   ::after {
-    content: '';
-    position: absolute;
+    /* content: ''; */
+    /* position: absolute; */
     width: 100%;
     height: 100%;
     top: 0;
-    background-color: var(--color-bg-dark);
-    opacity: 0.9;
-    backdrop-filter: blur(1px);
+    /* background-color: var(--color-bg-dark); */
+    background-color: rgba(var(--color-bg-dark), 89%);
+    backdrop-filter: blur(5px);
     z-index: 1;
+    /* opacity: 0.9; */
+    /* backdrop-filter: blur(1px); */
   }
 `
 const Navbar = styled.div`
