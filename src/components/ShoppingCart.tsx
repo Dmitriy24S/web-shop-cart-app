@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useShoppingCartContext } from '../context/ShoppingCartContext'
+import storeItems from '../data/data.json'
+import currencyFormat from '../utils/currencyFormat'
 import CartItem from './CartItem'
 
 interface Props {
@@ -12,6 +14,13 @@ const ShoppingCart = ({ isCartOpen }: Props) => {
   console.log({ isCartOpen })
   // console.log('Open cart, cart items', cartItems)
   // 0: {id: 1, amount: 4}
+
+  const totalCartPrice = cartItems.reduce((total, cartItem) => {
+    const fullItemInfo = storeItems.find((item) => item.id === cartItem.id)
+    // ! possibly undefined
+    // return total + (fullItemInfo.price) * cartItem.amount
+    return total + (fullItemInfo?.price || 0) * cartItem.amount
+  }, 0)
 
   return (
     <>
@@ -28,6 +37,9 @@ const ShoppingCart = ({ isCartOpen }: Props) => {
             ? 'Cart is empty.'
             : cartItems?.map((item) => <CartItem {...item} key={item.id} />)}
         </ul>
+        <div className='cart-total'>
+          Total <span>{currencyFormat(totalCartPrice)}</span>
+        </div>
       </CartWrapper>
     </>
   )
@@ -86,6 +98,15 @@ const CartWrapper = styled.div<{ isCartOpen: boolean }>`
   }
   .cart-list {
     text-align: center;
+  }
+  .cart-total {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    span {
+      color: var(--color-purple);
+      font-weight: 600;
+    }
   }
 `
 

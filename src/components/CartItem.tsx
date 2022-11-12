@@ -50,6 +50,7 @@ const CartItemWrapper = styled.div`
   background-color: var(--color-dark-purple);
   border-radius: 7px;
   margin-bottom: 1rem;
+  text-align: left;
   img {
     width: 68px;
     height: 51px;
