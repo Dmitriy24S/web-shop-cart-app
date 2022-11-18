@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 import ShoppingCart from '../components/ShoppingCart'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 interface CartItemType {
   id: number
@@ -29,7 +30,8 @@ export const ShoppingCartContextProvider = ({ children }: Props) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   // const [isCartOpen, setIsCartOpen] = useState(true)
   // const [cartItems, setCartItems] = useState<CartItemType[]>([])
-  const [cartItems, setCartItems] = useState<CartItemType[]>([{ id: 2, amount: 2 }])
+  // const [cartItems, setCartItems] = useState<CartItemType[]>([{ id: 2, amount: 2 }])
+  const [cartItems, setCartItems] = useLocalStorage<CartItemType[]>('shopping-cart', [{ id: 2, amount: 2 }])
 
   const toggleCart = () => {
     console.log(isCartOpen, 'toggle')
